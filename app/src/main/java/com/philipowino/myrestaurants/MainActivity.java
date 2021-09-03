@@ -29,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String locationZip = location.getText().toString();
+                // Passing data with Intent
+                String zipCode = location.getText().toString();
 
-                // Toast the value entered
-                Toast.makeText(MainActivity.this,locationZip,Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this,Restaurants.class);
+                intent.putExtra("location",zipCode);
 
-                // Log the value to Logcat
-                Log.d(TAG,locationZip);
+                startActivity(intent);
             }
         });
 
