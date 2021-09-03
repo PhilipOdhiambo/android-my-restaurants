@@ -1,6 +1,10 @@
 package com.philipowino.myrestaurants;
 
+import android.widget.TextView;
+
 import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
@@ -16,5 +20,11 @@ public class MainActivityTest {
                 .create()
                 .resume()
                 .get();
+    }
+
+    @Test
+    public void validateTextViewContent() {
+        TextView appNameTextView = activity.findViewById(R.id.appNameTextView);
+        assertTrue("My Restaurants".equals(appNameTextView.getText().toString()));
     }
 }
