@@ -1,5 +1,6 @@
 package com.philipowino.myrestaurants;
 
+import android.content.Intent;
 import android.widget.TextView;
 
 import org.junit.Before;
@@ -8,6 +9,7 @@ import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.shadows.ShadowActivity;
 
 @RunWith(RobolectricTestRunner.class)
 public class MainActivityTest {
@@ -26,5 +28,20 @@ public class MainActivityTest {
     public void validateTextViewContent() {
         TextView appNameTextView = activity.findViewById(R.id.appNameTextView);
         assertTrue("My Restaurants".equals(appNameTextView.getText().toString()));
+    }
+
+
+    @Test // Using Shadows
+    public void secondActivityStarted() {
+
+        activity.findViewById(R.id.button).performClick();
+        Intent expectedIntent = new Intent(activity,Restaurants.class);
+
+        ShadowActivity shadowActivity = org.robolectric.Shadows.shadowOf(activity);
+
+        Intent actualIntent = shadowActivity.getNextStartedActivity();
+
+        assertTrue(actualIntent.filterEquals(expectedIntent));
+
     }
 }
