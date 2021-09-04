@@ -11,10 +11,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class Restaurants extends AppCompatActivity {
 
-    private ListView mListView;
-    private TextView mLocation;
+    @BindView(R.id.locationView) TextView mLocation;
+    @BindView(R.id.restaurantsLIstView) ListView mListView;
+
     private String[] restaurants = new String[] {"Mi Mero Mole", "Mother's Bistro",
             "Life of Pie", "Screen Door", "Luc Lac", "Sweet Basil",
             "Slappy Cakes", "Equinox", "Miss Delta's", "Andina",
@@ -26,10 +30,7 @@ public class Restaurants extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants);
-
-        // Custom Code
-        mLocation = (TextView) findViewById(R.id.locationView);
-        mListView = (ListView) findViewById(R.id.restaurantsLIstView);
+        ButterKnife.bind(this);
 
         // Initialize and set ArrayAdapter
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, restaurants);
