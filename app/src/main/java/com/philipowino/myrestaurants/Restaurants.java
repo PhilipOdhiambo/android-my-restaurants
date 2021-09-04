@@ -47,6 +47,6 @@ public class Restaurants extends AppCompatActivity {
         // Initialize Intent
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
-        mLocation.setText(location);
+        mLocation.setText("Here are all the restaurants near: " + location);
     }
 }

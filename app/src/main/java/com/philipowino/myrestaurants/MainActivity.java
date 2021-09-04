@@ -30,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 // Passing data with Intent
-                String zipCode = location.getText().toString();
+                String textToPass = location.getText().toString();
 
                 Intent intent = new Intent(MainActivity.this,Restaurants.class);
-                intent.putExtra("location",zipCode);
+                intent.putExtra("location",textToPass);
 
                 startActivity(intent);
             }
