@@ -1,14 +1,14 @@
-package com.philipowino.myrestaurants;
+package com.philipowino.myrestaurants.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.philipowino.myrestaurants.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -16,8 +16,9 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements  View.OnClickListener {
     public static final String TAG = MainActivity.class.getSimpleName();
 
-    @BindView(R.id.button) Button button;
+    @BindView(R.id.button1) Button button;
     @BindView(R.id.zipCode) EditText location;
+
 
 
     @Override
@@ -26,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        // Set on click listener for "find restaurant" button
         button.setOnClickListener(this);
     }
 

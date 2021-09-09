@@ -1,4 +1,4 @@
-package com.philipowino.myrestaurants;
+package com.philipowino.myrestaurants.network;
 
 import static com.philipowino.myrestaurants.Constants.YELP_API_KEY;
 import static com.philipowino.myrestaurants.Constants.YELP_BASE_URL;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Restaurants">
+    tools:context=".ui.Restaurants">
 
     <TextView
         android:id="@+id/locationView"
@@ -12,13 +12,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         />
-    <ListView
-        android:id="@+id/restaurantsListView"
-        android:layout_below="@id/locationView"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"/>
+        android:layout_below="@id/locationView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="16dp"
+        android:visibility="gone" />
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#333333"
-    tools:context=".MainActivity"
+    tools:context=".ui.MainActivity"
     >
 
     <ImageView
@@ -29,19 +29,19 @@
 
     <EditText
         android:id="@+id/zipCode"
-        android:inputType="text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/button"
+        android:layout_above="@id/button1"
         android:layout_centerHorizontal="true"
-        android:padding="5dp"
         android:layout_marginBottom="10dp"
         android:background="@color/colorTextIcons"
         android:hint="Enter Zip Code"
-        />
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:padding="5dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

@@ -6,6 +6,10 @@ import android.widget.TextView;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+
+import com.philipowino.myrestaurants.ui.MainActivity;
+import com.philipowino.myrestaurants.ui.Restaurants;
+
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
@@ -35,7 +39,7 @@ public class MainActivityTest {
     public void secondActivityStarted() {
 
         activity.findViewById(R.id.button).performClick();
-        Intent expectedIntent = new Intent(activity,Restaurants.class);
+        Intent expectedIntent = new Intent(activity, Restaurants.class);
 
         ShadowActivity shadowActivity = org.robolectric.Shadows.shadowOf(activity);
 

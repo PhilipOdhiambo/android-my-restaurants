@@ -1,4 +1,6 @@
-package com.philipowino.myrestaurants;
+package com.philipowino.myrestaurants.network;
+
+import com.philipowino.myrestaurants.models.YelpBusinessesSearchResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

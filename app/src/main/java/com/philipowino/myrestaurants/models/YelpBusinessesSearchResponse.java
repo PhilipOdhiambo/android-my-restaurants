@@ -1,9 +1,11 @@
 
-package com.philipowino.myrestaurants;
+package com.philipowino.myrestaurants.models;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.philipowino.myrestaurants.models.Business;
+import com.philipowino.myrestaurants.models.Region;
 
 public class YelpBusinessesSearchResponse {
 

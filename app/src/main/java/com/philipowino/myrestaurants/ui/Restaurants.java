@@ -1,6 +1,8 @@
-package com.philipowino.myrestaurants;
+package com.philipowino.myrestaurants.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +15,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.philipowino.myrestaurants.MyRestaurantsArrayAdapter;
+import com.philipowino.myrestaurants.R;
+import com.philipowino.myrestaurants.adapters.RestaurantListAdapter;
+import com.philipowino.myrestaurants.models.Business;
+import com.philipowino.myrestaurants.models.Category;
+import com.philipowino.myrestaurants.models.YelpBusinessesSearchResponse;
+import com.philipowino.myrestaurants.network.YelpApi;
+import com.philipowino.myrestaurants.network.YelpClient;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -22,60 +33,40 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Restaurants extends AppCompatActivity {
+
     private static final String TAG = "Restaurants";
-    @BindView(R.id.locationView) TextView mLocation;
-    @BindView(R.id.restaurantsListView) ListView mListView;
+
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
-
+    private RestaurantListAdapter mAdapter;
+    public List<Business> restaurants;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants);
         ButterKnife.bind(this);
 
-
-        // Set OnItemClickListener to display Toast when listItem is clicked
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                String restaurant = ((TextView)view).getText().toString();
-                Log.v("RestaurantsActivity", "In the onItemClickListener!");
-                Toast.makeText(Restaurants.this, restaurant, Toast.LENGTH_LONG).show();
-            }
-        });
-
         // Initialize Intent
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
-        mLocation.setText("Here are all the restaurants near: " + location);
 
         YelpApi client = YelpClient.getClient();
         Call<YelpBusinessesSearchResponse> call = client.getRestaurants(location, "restaurants");
+
         call.enqueue(new Callback<YelpBusinessesSearchResponse>() {
             @Override
             public void onResponse(Call<YelpBusinessesSearchResponse> call, Response<YelpBusinessesSearchResponse> response) {
                 hideProgressBar();
                 if (response.isSuccessful()) {
-                    List<Business> restaurantsLIst = response.body().getBusinesses();
-                    String[] restaurants = new String [restaurantsLIst.size()];
-                    String[] categories = new String [restaurantsLIst.size()];
+                    restaurants = response.body().getBusinesses();
+                    mAdapter = new RestaurantListAdapter(Restaurants.this,restaurants);
+                    mRecyclerView.setAdapter(mAdapter);
 
-                    for (int i = 0; i < restaurants.length; i++) {
-                        restaurants[i] = restaurantsLIst.get(i).getName();
-                    }
-                    Log.i(TAG,"Restaurants" + restaurantsLIst.toString());
-
-
-                    for (int i = 0; i < categories.length; i++) {
-                        Category category = restaurantsLIst.get(i).getCategories().get(0);
-                        categories[i] = category.getTitle();
-                    }
-
-                    ArrayAdapter adapter = new MyRestaurantsArrayAdapter(Restaurants.this, android.R.layout.simple_list_item_1, restaurants,categories);
-                    mListView.setAdapter(adapter);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Restaurants.this);
+                    mRecyclerView.setLayoutManager(layoutManager);
+                    mRecyclerView.setHasFixedSize(true);
 
                     showRestaurants();
                 } else {
@@ -105,8 +96,9 @@ public class Restaurants extends AppCompatActivity {
     }
 
     private void showRestaurants() {
-        mListView.setVisibility(View.VISIBLE);
-        mLocation.setVisibility(View.VISIBLE);
+        mProgressBar.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.VISIBLE);
+
     }
 
     private void hideProgressBar() {

@@ -1,5 +1,5 @@
 
-package com.philipowino.myrestaurants;
+package com.philipowino.myrestaurants.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
