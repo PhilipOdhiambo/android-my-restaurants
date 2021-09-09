@@ -1,4 +1,4 @@
-package com.philipowino.myrestaurants;
+package com.philipowino.myrestaurants.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.philipowino.myrestaurants.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

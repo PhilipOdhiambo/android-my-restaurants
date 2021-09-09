@@ -1,14 +1,14 @@
-package com.philipowino.myrestaurants;
+package com.philipowino.myrestaurants.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.philipowino.myrestaurants.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 // Passing data with Intent
                 String textToPass = location.getText().toString();
 
-                Intent intent = new Intent(MainActivity.this,Restaurants.class);
+                Intent intent = new Intent(MainActivity.this, Restaurants.class);
                 intent.putExtra("location",textToPass);
 
                 startActivity(intent);
