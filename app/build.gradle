@@ -84,6 +84,8 @@ dependencies {
     // Firebase recycler view setup
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.firebaseui:firebase-ui-database:7.1.1'
+    //Firebase user auth
+    implementation 'com.google.firebase:firebase-auth'
 
 }
 apply plugin: 'com.google.gms.google-services'
