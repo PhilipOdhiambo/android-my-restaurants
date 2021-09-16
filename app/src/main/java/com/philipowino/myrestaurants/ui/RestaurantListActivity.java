@@ -8,18 +8,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.philipowino.myrestaurants.MyRestaurantsArrayAdapter;
 import com.philipowino.myrestaurants.R;
 import com.philipowino.myrestaurants.adapters.RestaurantListAdapter;
 import com.philipowino.myrestaurants.models.Business;
-import com.philipowino.myrestaurants.models.Category;
 import com.philipowino.myrestaurants.models.YelpBusinessesSearchResponse;
 import com.philipowino.myrestaurants.network.YelpApi;
 import com.philipowino.myrestaurants.network.YelpClient;
@@ -32,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Restaurants extends AppCompatActivity {
+public class RestaurantListActivity extends AppCompatActivity {
 
     private static final String TAG = "Restaurants";
 
@@ -61,10 +55,10 @@ public class Restaurants extends AppCompatActivity {
                 hideProgressBar();
                 if (response.isSuccessful()) {
                     restaurants = response.body().getBusinesses();
-                    mAdapter = new RestaurantListAdapter(Restaurants.this,restaurants);
+                    mAdapter = new RestaurantListAdapter(RestaurantListActivity.this,restaurants);
                     mRecyclerView.setAdapter(mAdapter);
 
-                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Restaurants.this);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RestaurantListActivity.this);
                     mRecyclerView.setLayoutManager(layoutManager);
                     mRecyclerView.setHasFixedSize(true);
 

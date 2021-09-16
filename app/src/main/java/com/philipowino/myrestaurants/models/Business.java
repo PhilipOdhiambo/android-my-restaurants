@@ -5,53 +5,56 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Business {
 
     @SerializedName("rating")
     @Expose
-    private Double rating;
+    Double rating;
     @SerializedName("price")
     @Expose
-    private String price;
+    String price;
     @SerializedName("phone")
     @Expose
-    private String phone;
+    String phone;
     @SerializedName("id")
     @Expose
-    private String id;
+    String id;
     @SerializedName("alias")
     @Expose
-    private String alias;
+    String alias;
     @SerializedName("is_closed")
     @Expose
-    private Boolean isClosed;
+    Boolean isClosed;
     @SerializedName("categories")
     @Expose
-    private List<Category> categories = null;
+    List<Category> categories = null;
     @SerializedName("review_count")
     @Expose
-    private Integer reviewCount;
+     Integer reviewCount;
     @SerializedName("name")
     @Expose
-    private String name;
+     String name;
     @SerializedName("url")
     @Expose
-    private String url;
+     String url;
     @SerializedName("coordinates")
     @Expose
-    private Coordinates coordinates;
+     Coordinates coordinates;
     @SerializedName("image_url")
     @Expose
-    private String imageUrl;
+    String imageUrl;
     @SerializedName("location")
     @Expose
-    private Location location;
+    Location location;
     @SerializedName("distance")
     @Expose
-    private Double distance;
+    Double distance;
     @SerializedName("transactions")
     @Expose
-    private List<String> transactions = null;
+    List<String> transactions = null;
 
     /**
      * No args constructor for use in serialization
