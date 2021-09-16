@@ -14,6 +14,11 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+
 public class YelpClient {
 
     private static Retrofit retrofit = null;
@@ -31,6 +36,22 @@ public class YelpClient {
                             return chain.proceed(newRequest);
                         }
                     })
+          Interceptor interceptor =  new Interceptor() {
+
+                @Override
+                public Response intercept(Chain chain) throws IOException {
+                    Request newRequest  = chain.request().newBuilder()
+                            .addHeader("Authorization","Bearer " +  YELP_API_KEY)
+                            .build();
+                    return chain.proceed(newRequest);
+                }
+            };
+
+            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+          loggingInterceptor.level(HttpLoggingInterceptor.Level.BODY);
+
+            OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                    .addInterceptor(interceptor).addInterceptor(loggingInterceptor)
                     .build();
 
             retrofit = new Retrofit.Builder()

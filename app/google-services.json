@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "571434530016",
+    "project_id": "my-restaurants-7dfd0",
+    "storage_bucket": "my-restaurants-7dfd0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571434530016:android:50db285ea0718654fd4c85",
+        "android_client_info": {
+          "package_name": "com.philipowino.myrestaurants"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571434530016-q4jl3ek1fpuiqtj0od0cnudh2u6ej6b2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.philipowino.myrestaurants",
+            "certificate_hash": "fd4686c438f2620d07c0a8258724dd51baef9e35"
+          }
+        },
+        {
+          "client_id": "571434530016-f7jormu1rp73b6119on2od9figin5luq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsOGHcj3YfPXidicwlBXNmHJ1vRYWtOzg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "571434530016-f7jormu1rp73b6119on2od9figin5luq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

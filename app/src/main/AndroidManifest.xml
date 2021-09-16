@@ -3,6 +3,7 @@
     package="com.philipowino.myrestaurants">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -19,6 +20,21 @@
                 android:value=".ui.MainActivity">
             </meta-data>
 
+            android:name=".ui.SavedRestaurantListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.RestaurantDetailActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.RestaurantListActivity" />
+        </activity>
+        <activity
+            android:name=".ui.RestaurantListActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainActivity" />
         </activity>
         <activity
             android:name=".ui.MainActivity"

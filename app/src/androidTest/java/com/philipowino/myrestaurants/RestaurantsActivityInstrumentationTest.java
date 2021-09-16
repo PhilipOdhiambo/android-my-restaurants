@@ -18,6 +18,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.philipowino.myrestaurants.ui.Restaurants;
+import com.philipowino.myrestaurants.ui.RestaurantListActivity;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -27,14 +28,14 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class RestaurantsActivityInstrumentationTest {
     @Rule
-    public ActivityScenarioRule<Restaurants> activityTestRule = new ActivityScenarioRule<>(Restaurants.class);
+    public ActivityScenarioRule<RestaurantListActivity> activityTestRule = new ActivityScenarioRule<>(RestaurantListActivity.class);
     private View activityDecorView;
 
     @Before
     public void setUp() throws Exception {
-        activityTestRule.getScenario().onActivity(new ActivityScenario.ActivityAction<Restaurants>() {
+        activityTestRule.getScenario().onActivity(new ActivityScenario.ActivityAction<RestaurantListActivity>() {
             @Override
-            public void perform(Restaurants activity) {
+            public void perform(RestaurantListActivity activity) {
                 activityDecorView = activity.getWindow().getDecorView();
             }
         });
